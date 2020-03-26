@@ -14,16 +14,16 @@ function App() {
       </header>
       <div className="App">
         <Tabs type="card">
-          <TabPane tab="Tab 1" key="1">
+          <TabPane tab="Таймер" key="1">
             <Timer />
+            <div className="button">
+        <Button type="primary">Будет какая-то кнопка</Button>
+      </div>
           </TabPane>
-          <TabPane tab="Tab 2" key="2">
+          <TabPane tab="Счетчик обратного времени" key="2">
             <Countdown />
           </TabPane>
         </Tabs>
-      </div>
-      <div className="button">
-        <Button type="primary">Button</Button>
       </div>
     </div>
   );
