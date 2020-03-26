@@ -1,13 +1,11 @@
 import React from 'react';
 import { Button, Tabs } from 'antd';
+import Timer from './components/Timer/Timer.js'
+import Countdown from './components/Countdown/Countdown'
 import './App.css';
 
 function App() {
   const { TabPane } = Tabs;
-
-  function callback(key) {
-    console.log(key);
-  }
 
   return (
     <div className="App">
@@ -15,19 +13,16 @@ function App() {
         <h1>Здесь будут таймеры!</h1>
       </header>
       <div className="App">
-        <Tabs onChange={callback} type="card">
+        <Tabs type="card">
           <TabPane tab="Tab 1" key="1">
-            Content of Tab Pane 1
-    </TabPane>
+            <Timer />
+          </TabPane>
           <TabPane tab="Tab 2" key="2">
-            Content of Tab Pane 2
-    </TabPane>
-          <TabPane tab="Tab 3" key="3">
-            Content of Tab Pane 3
-    </TabPane>
+            <Countdown />
+          </TabPane>
         </Tabs>
       </div>
-      <div class="button">
+      <div className="button">
         <Button type="primary">Button</Button>
       </div>
     </div>
