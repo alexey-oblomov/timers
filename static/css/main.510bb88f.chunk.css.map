@@ -1,0 +1,1 @@
+{"version":3,"sources":["App.css"],"names":[],"mappings":"AACA,KACE,iBACF","file":"main.510bb88f.chunk.css","sourcesContent":["@import '~antd/dist/antd.css';\r\n.App {\r\n  text-align: center;\r\n}"]}
