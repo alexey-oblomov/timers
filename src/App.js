@@ -12,8 +12,7 @@ function App() {
   return (
     <div className="App">
       <header className="App-header">
-        <p> Здесь будут таймеры!
-        </p>
+        <h1>Здесь будут таймеры!</h1>
       </header>
       <div className="App">
         <Tabs onChange={callback} type="card">
@@ -26,9 +25,11 @@ function App() {
           <TabPane tab="Tab 3" key="3">
             Content of Tab Pane 3
     </TabPane>
-        </Tabs>,
+        </Tabs>
       </div>
-      <Button type="primary">Button</Button>
+      <div class="button">
+        <Button type="primary">Button</Button>
+      </div>
     </div>
   );
 }
