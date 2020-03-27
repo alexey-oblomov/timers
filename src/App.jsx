@@ -1,6 +1,6 @@
 import React from "react";
 import { Button, Tabs } from "antd";
-import Timer from "./components/Timer/Timer.js";
+import Timer from "./components/Timer/Timer";
 import Countdown from "./components/Countdown/Countdown";
 import "./App.css";
 
@@ -30,7 +30,3 @@ function App() {
 }
 
 export default App;
-
-console.log('test eslint, pretier husky');
-
-//mdn object.keys

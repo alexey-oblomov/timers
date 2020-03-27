@@ -12,7 +12,7 @@
   },
   "rules": {
     "prettier/prettier": ["error", {
-      "singleQuote": false,
+      "singleQuote": true,
       "trailingComma": "es5",
       "endOfLine": "lf",
       "printWidth": 100
