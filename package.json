@@ -15,7 +15,8 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    "precommit":"npm run prettier",
+    //"precommit":"npm run prettier",
+    "precommit": "lint-staged",
     "prepush": "call npm run lint && call npm run test",  
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
