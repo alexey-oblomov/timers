@@ -15,12 +15,15 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
+    "precommit":"npm run prettier",
+    "prepush": "call npm run lint && call npm run test",  
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"  
   },
   "eslintConfig": {
     "extends": "react-app"
@@ -49,12 +52,5 @@
     "husky": "^4.2.3",
     "lint-staged": "^10.0.9",
     "prettier": "^2.0.2"
-  },
-  "husky": {
-    "hooks": {
-      "pre-commit": "npm test",
-      "pre-push": "npm test",
-      "...": "..."
-    }
   }
 }
