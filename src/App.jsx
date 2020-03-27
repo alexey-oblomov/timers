@@ -29,6 +29,8 @@ function App() {
   );
 }
 
-export default App
+export default App;
 
-console.log("test eslint, pretier> husky"  1
+console.log('test eslint, pretier husky');
+
+//mdn object.keys

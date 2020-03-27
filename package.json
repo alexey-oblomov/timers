@@ -15,16 +15,16 @@
     "react-scripts": "3.4.1"
   },
   "scripts": {
-    //"precommit":"npm run prettier",
-    "precommit": "lint-staged",
-    "prepush": "call npm run lint && call npm run test",  
+    "lint": "eslint --debug src/",
+    "lint:write": "eslint --debug src/ --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject",
-    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"  
+    "prettier": "prettier --write src/**/*.js",
+    "prettier-watch": "onchange '**/*.js' -- prettier --write {{changed}}"
   },
   "eslintConfig": {
     "extends": "react-app"
