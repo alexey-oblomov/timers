@@ -31,4 +31,4 @@ function App() {
 
 export default App
 
-console.log("test eslint, pretier> husky")
+console.log("test eslint, pretier> husky"
