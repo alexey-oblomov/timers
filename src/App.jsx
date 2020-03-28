@@ -31,6 +31,7 @@ function App() {
 
 console.log();
 console.log('еще');
+console.log('снова');
 
 
 export default App;
