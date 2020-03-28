@@ -1,8 +1,8 @@
-import React from "react";
-import { Button, Tabs } from "antd";
-import Timer from "./components/Timer/Timer";
-import Countdown from "./components/Countdown/Countdown";
-import "./App.css";
+import React from 'react';
+import { Button, Tabs } from 'antd';
+import Timer from './components/Timer/Timer';
+import Countdown from './components/Countdown/Countdown';
+import './App.css';
 
 function App() {
   const { TabPane } = Tabs;
@@ -22,16 +22,11 @@ function App() {
           </TabPane>
           <TabPane tab="Счетчик обратного времени" key="2">
             <Countdown />
-            </TabPane>
+             </TabPane>
         </Tabs>
       </div>
     </div>
   );
 }
-
-console.log();
-console.log('еще');
-console.log('снова');
-
 
 export default App;
