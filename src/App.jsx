@@ -22,7 +22,7 @@ function App() {
           </TabPane>
           <TabPane tab="Счетчик обратного времени" key="2">
             <Countdown />
-            </TabPane>
+          </TabPane>
         </Tabs>
       </div>
     </div>
