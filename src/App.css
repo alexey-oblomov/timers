@@ -1,9 +1,22 @@
 @import '~antd/dist/antd.css';
-.App {
-  text-align: center;
+.app-container {
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+}
+
+.app-header {
+  align-self: center;
   margin-top: 50px;
 }
 
+.app {
+    align-items: center;
+    align-self: center;
+    width: 500px;
+    flex-grow: 1;
+}
+
 .button {
-  margin-top: 25px;
+    margin-top: 25px;
 }
