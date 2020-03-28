@@ -30,6 +30,7 @@ function App() {
 }
 
 console.log();
+console.log('еще');
 
 
 export default App;
