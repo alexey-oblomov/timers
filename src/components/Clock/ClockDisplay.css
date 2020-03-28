@@ -1,0 +1,14 @@
+.timerDisplayWrapper {
+    display: flex;
+    justify-content: center;
+}
+
+.class1 {
+    display: block;
+    text-align: right;
+}
+
+.class2 {
+    display: block;
+    text-align: left;
+}
