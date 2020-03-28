@@ -19,7 +19,7 @@
   },
   "scripts": {
     "lint": "eslint --debug \"**/*.{jsx,js}\"",
-    "lint:write": "eslint --debug \"**/*.{jsx,js}\" --fix",
+    "lint:write": "eslint \"**/*.{jsx,js}\" --fix",
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
     "start": "react-scripts start",
