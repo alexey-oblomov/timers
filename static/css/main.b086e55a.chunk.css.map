@@ -1,1 +1,0 @@
-{"version":3,"sources":["App.css"],"names":[],"mappings":"AACA,KACE,iBAAkB,CAClB,eACF,CAEA,QACE,eACF","file":"main.b086e55a.chunk.css","sourcesContent":["@import '~antd/dist/antd.css';\r\n.App {\r\n  text-align: center;\r\n  margin-top: 50px;\r\n}\r\n\r\n.button {\r\n  margin-top: 25px;\r\n}"]}
