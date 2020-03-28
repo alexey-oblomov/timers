@@ -18,7 +18,7 @@ function App() {
           <TabPane tab="Часы" key="1">
             <Clock />
           </TabPane>
-          <TabPane tab="Таймер" key="2">
+          <TabPane tab="Секундомер" key="2">
             <Timer />
           </TabPane>
           <TabPane tab="Счетчик обратного времени" key="3">
