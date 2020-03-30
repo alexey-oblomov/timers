@@ -1,0 +1,14 @@
+.countdown-container {
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+}
+
+.btn-container {
+    display: flex;
+    flex-direction: column;
+}
+
+.btn {
+    margin: 10px 10px;
+}
