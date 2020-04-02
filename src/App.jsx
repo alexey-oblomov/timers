@@ -7,7 +7,6 @@ import './App.css';
 
 function App() {
   const { TabPane } = Tabs;
-
   return (
     <div className="app-container">
       <header className="app-header">

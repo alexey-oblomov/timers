@@ -18,7 +18,7 @@ export default class Timer extends React.Component {
 
   tick() {
     this.setState({
-      millisecond: this.state.millisecond + 4,
+      millisecond: this.state.millisecond + 17,
     });
     if (this.state.millisecond >= 1000) {
       this.setState({
@@ -42,7 +42,7 @@ export default class Timer extends React.Component {
 
   handleStart = () => {
     if (this.state.isPaused) {
-      this.timerID = setInterval(() => this.tick(), 4);
+      this.timerID = setInterval(() => this.tick(), 17);
       this.setState({
         isPaused: false,
       });

@@ -1,15 +1,57 @@
 import './CountdownInputField.css';
 import React from 'react';
-import { Slider, InputNumber, Row, Col } from 'antd';
+import { Slider, InputNumber, Row } from 'antd';
 
 export default function CountdownInputField(props) {
-  const { funcMin, funcSec, min, sec } = props;
+  const {
+    changeMinutes,
+    changeSeconds,
+    changeValueFromSlider,
+    valueInputMinutes,
+    valueInputSeconds,
+    isDisabled,
+    valueSlider,
+  } = props;
   return (
     <>
-      <Minutes func={funcMin} min={min} />
-      <Seconds func={funcSec} sec={sec} />
+      <SliderTimer
+        changeValueFromSlider={changeValueFromSlider}
+        value={valueSlider}
+        isDisabled={isDisabled}
+      />
+      <Minutes
+        changeMinutes={changeMinutes}
+        value={valueInputMinutes}
+        isDisabled={isDisabled}
+      />
+      <Seconds
+        changeSeconds={changeSeconds}
+        value={valueInputSeconds}
+        isDisabled={isDisabled}
+      />
     </>
   );
+}
+
+class SliderTimer extends React.Component {
+  onChange = (value) => {
+    const { changeValueFromSlider } = this.props;
+    changeValueFromSlider(value);
+  };
+
+  render() {
+    const { isDisabled, value } = this.props;
+    return (
+      <Slider
+        min={0}
+        max={43200}
+        step={15}
+        value={value}
+        onChange={this.onChange}
+        disabled={isDisabled}
+      />
+    );
+  }
 }
 
 class Minutes extends React.Component {
@@ -17,31 +59,23 @@ class Minutes extends React.Component {
     if (isNaN(value)) {
       return;
     }
-    const { func } = this.props;
-    func(value);
+    const { changeMinutes } = this.props;
+    changeMinutes(value);
   };
 
   render() {
+    const { isDisabled, value } = this.props;
     return (
       <Row>
-        <Col span={12}>
-          <Slider
-            min={0}
-            max={60}
-            onChange={this.onChange}
-            value={this.props.min}
-          />
-        </Col>
-        <Col span={4}>
-          <InputNumber
-            min={0}
-            max={60}
-            style={{ margin: '0 16px' }}
-            value={this.props.min}
-            onChange={this.onChange}
-            step={1}
-          />
-        </Col>
+        <InputNumber
+          min={0}
+          max={720}
+          style={{ margin: '0 16px' }}
+          value={value}
+          onChange={this.onChange}
+          step={1}
+          disabled={isDisabled}
+        />
       </Row>
     );
   }
@@ -52,33 +86,23 @@ class Seconds extends React.Component {
     if (isNaN(value)) {
       return;
     }
-    const { func } = this.props;
-    func(value);
+    const { changeSeconds } = this.props;
+    changeSeconds(value);
   };
 
   render() {
-    const { sec } = this.props;
+    const { value, isDisabled } = this.props;
     return (
       <Row>
-        <Col span={12}>
-          <Slider
-            min={0}
-            max={60}
-            onChange={this.onChange}
-            value={sec}
-            step={1}
-          />
-        </Col>
-        <Col span={4}>
-          <InputNumber
-            min={0}
-            max={60}
-            style={{ margin: '0 16px' }}
-            step={1}
-            value={sec}
-            onChange={this.onChange}
-          />
-        </Col>
+        <InputNumber
+          min={0}
+          max={60}
+          style={{ margin: '0 16px' }}
+          step={1}
+          value={value}
+          onChange={this.onChange}
+          disabled={isDisabled}
+        />
       </Row>
     );
   }

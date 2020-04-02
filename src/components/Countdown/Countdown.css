@@ -7,8 +7,52 @@
 .btn-container {
     display: flex;
     flex-direction: column;
+
+    margin: 5px;
+    padding: 5px;
+    flex: 0 1 auto;
+    align-self: center;
 }
 
 .btn {
     margin: 10px 10px;
 }
+
+.display-progress-container {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    margin-bottom: 20px;
+   }
+
+.diasplay-progress-flex-box {
+    margin: 5px;
+    padding: 5px;
+    flex: 0 1 auto;
+    align-self: center;
+   }
+
+.InputField-container {
+    width: 60%;
+    margin-left: auto;
+    margin-right: auto;
+
+    margin: 5px;
+    padding: 5px;
+    flex: 0 1 auto;
+    align-self: center;
+}
+
+.InputField-buttons-container {
+    display: flex;
+    justify-content: center;
+    height: 100px;
+    margin-bottom: 20px;
+   }
+
+.InputField-buttons-flex-box {
+    margin: 5px;
+    padding: 5px;
+    flex: 0 1 auto;
+    align-self: center;
+   }
