@@ -1,4 +1,5 @@
 import React from 'react';
+
 import './Clock.css';
 import ClockDisplay from './ClockDisplay';
 
@@ -8,7 +9,7 @@ export default class Clock extends React.Component {
   };
 
   componentDidMount() {
-    this.timerID = setInterval(() => this.tick(), 10);
+    this.timerID = setInterval(() => this.tick(), 17);
   }
 
   componentWillUnmount() {
@@ -23,15 +24,15 @@ export default class Clock extends React.Component {
   }
 
   render() {
-    const time = this.state.currentTime;
-    const ms = ('00' + time.getMilliseconds().toString())
+    const { currentTime } = this.state;
+    const ms = ('00' + currentTime.getMilliseconds().toString())
       .split('')
       .slice(-3)
       .join('');
     return (
       <div className="timer-container">
         <ClockDisplay
-          currentTime={this.state.currentTime.toLocaleTimeString()}
+          currentTime={currentTime.toLocaleTimeString()}
           currentMs={ms}
         />
       </div>

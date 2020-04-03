@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './TimerDisplay.css';
 
 export default function ClockDisplay(props) {
@@ -12,3 +14,7 @@ export default function ClockDisplay(props) {
     </div>
   );
 }
+
+ClockDisplay.propTypes = {
+  currentTime: PropTypes.string,
+};

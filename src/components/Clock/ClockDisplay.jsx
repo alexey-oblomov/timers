@@ -1,4 +1,6 @@
 import React from 'react';
+import PropTypes from 'prop-types';
+
 import './ClockDisplay.css';
 
 export default function ClockDisplay(props) {
@@ -17,3 +19,8 @@ export default function ClockDisplay(props) {
     </>
   );
 }
+
+ClockDisplay.propTypes = {
+  currentTime: PropTypes.string,
+  currentMs: PropTypes.string,
+};

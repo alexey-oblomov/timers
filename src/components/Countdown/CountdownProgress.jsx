@@ -1,8 +1,13 @@
-import { Progress } from 'antd';
 import React from 'react';
+import propTypes from 'prop-types';
 
-export default (props) => {
+import { Progress } from 'antd';
+
+export default function CountdownProgress(props) {
   const { percentTime } = props;
-  const displayPercentTime = percentTime === 100 ? 99 : percentTime;
-  return <Progress type="circle" percent={displayPercentTime} />;
+  return <Progress type="circle" percent={percentTime} />;
+}
+
+CountdownProgress.propTypes = {
+  percentTime: propTypes.number,
 };

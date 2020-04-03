@@ -1,6 +1,7 @@
 import React from 'react';
-import { Button } from 'antd';
+
 import './Timer.css';
+import { Button } from 'antd';
 import TimerDisplay from './TimerDisplay';
 
 export default class Timer extends React.Component {
@@ -17,6 +18,10 @@ export default class Timer extends React.Component {
   }
 
   tick() {
+    if (this.state.isPaused) {
+      clearTimeout(this.timerID);
+      return;
+    }
     this.setState({
       millisecond: this.state.millisecond + 17,
     });
@@ -38,16 +43,17 @@ export default class Timer extends React.Component {
         minute: 0,
       });
     }
+    this.timerID = setTimeout(() => this.tick(), 17);
   }
 
   handleStart = () => {
     if (this.state.isPaused) {
-      this.timerID = setInterval(() => this.tick(), 17);
       this.setState({
         isPaused: false,
       });
+      this.timerID = setTimeout(() => this.tick(), 17);
     } else {
-      clearInterval(this.timerID);
+      clearTimeout(this.timerID);
       this.setState({
         isPaused: true,
       });

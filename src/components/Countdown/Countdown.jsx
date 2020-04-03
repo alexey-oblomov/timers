@@ -1,8 +1,9 @@
 import React from 'react';
-import { Button } from 'antd';
+
 import './Countdown.css';
+import { Button } from 'antd';
 import CountdownDisplay from './CountdownDisplay';
-import CountdownInputField from './CountdownInputField';
+import CountdownInputBlock from './CountdownInputBlock';
 import CountdownProgress from './CountdownProgress';
 
 export default class Countdown extends React.Component {
@@ -24,61 +25,91 @@ export default class Countdown extends React.Component {
     return ('0' + value.toString()).split('').slice(-2).join('');
   };
 
-  changeValueMin = (min) => {
+  changeValueMin = (minutes) => {
     this.setState({
-      minutes: min,
+      minutes,
     });
   };
 
-  changeValueSec = (sec) => {
+  changeValueSec = (seconds) => {
     this.setState({
-      seconds: sec,
+      seconds,
     });
   };
 
   changeValueFromSlider = (value) => {
-    const min = Math.floor(value / 60);
-    const sec = value % 60;
+    const minutes = Math.floor(value / 60);
+    const seconds = value % 60;
     this.setState({
-      minutes: min,
-      seconds: sec,
+      minutes,
+      seconds,
+    });
+  };
+
+  calculateTimeProcent = () => {
+    const { totalTime, minutes, seconds } = this.state;
+    const currentTime = minutes * 60 + seconds;
+    const percentTime = Math.ceil(100 - (currentTime * 100) / totalTime);
+    this.setState({
+      percentTime,
+    });
+  };
+
+  pauseOn = () => {
+    clearTimeout(this.timerID);
+    this.setState({
+      isPaused: true,
+    });
+  };
+
+  pauseOff = () => {
+    this.setState({
+      isPaused: false,
     });
   };
 
   handleStart = () => {
-    if (!this.state.isPaused) {
-      this.setState({
-        isPaused: true,
-      });
-      return;
+    const { isFinish, isPaused, minutes, seconds } = this.state;
+    switch (isFinish) {
+      case true:
+        if (isPaused) {
+          const totalTime = minutes * 60 + seconds;
+          this.setState({
+            totalTime,
+            isDisabled: true,
+            isPaused: false,
+            isFinish: false,
+          });
+          this.timerID = setTimeout(() => this.tick(), 1000);
+        } else {
+          this.pauseOn();
+        }
+        break;
+      case false:
+        if (isPaused) {
+          this.pauseOff();
+          this.timerID = setTimeout(() => this.tick(), 1000);
+        } else {
+          this.pauseOn();
+        }
+        break;
+      default:
+        break;
     }
-    let totalTime = this.state.totalTime;
-    if (this.state.isFinish) {
-      totalTime = this.state.minutes * 60 + this.state.seconds;
-    }
-    this.setState({
-      totalTime: totalTime,
-      isDisabled: true,
-      isPaused: false,
-    });
-    const timerID = setTimeout(this.tick, 1000);
   };
 
   tick = () => {
-    let timerID;
-    if (this.state.isPaused) {
-      clearTimeout(timerID);
+    const { isPaused, minutes, seconds } = this.state;
+
+    this.calculateTimeProcent();
+
+    if (isPaused) {
+      clearTimeout(this.timerID);
       return;
     }
-    const currentTime = this.state.minutes * 60 + this.state.seconds;
-    const newPercentTime = Math.floor(
-      (currentTime * 100) / this.state.totalTime
-    );
-    this.setState({
-      percentTime: newPercentTime,
-    });
-    if (this.state.minutes === 0 && this.state.seconds === 0) {
-      clearTimeout(timerID);
+
+    if (minutes === 0 && seconds === 0) {
+      clearTimeout(this.timerID);
       this.setState({
         isPaused: true,
         isDisabled: false,
@@ -86,16 +117,19 @@ export default class Countdown extends React.Component {
       });
       return;
     }
-    if (this.state.seconds === 0) {
+
+    if (seconds === 0) {
       this.setState({
         seconds: 60,
         minutes: this.state.minutes - 1,
       });
     }
+
     this.setState({
       seconds: this.state.seconds - 1,
     });
-    timerID = setTimeout(this.tick, 1000);
+
+    this.timerID = setTimeout(this.tick, 1000);
   };
 
   handleReset = () => {
@@ -111,12 +145,12 @@ export default class Countdown extends React.Component {
   };
 
   render() {
+    const { percentTime, isDisabled } = this.state;
     const valueInputMinutes = this.state.minutes;
     const valueInputSeconds = this.state.seconds;
     const valueSlider = valueInputMinutes * 60 + valueInputSeconds;
     const valueDisplayMinutes = this.displayMinValue(this.state.minutes);
     const valueDisplaySeconds = this.displaySecValue(this.state.seconds);
-    const { percentTime, isDisabled } = this.state;
 
     return (
       <div className="Countdown-container">
@@ -124,8 +158,8 @@ export default class Countdown extends React.Component {
         <div className="display-progress-container">
           <div className="diasplay-progress-flex-box">
             <CountdownDisplay
-              min={valueDisplayMinutes}
-              sec={valueDisplaySeconds}
+              minutes={valueDisplayMinutes}
+              seconds={valueDisplaySeconds}
             />
           </div>
           <div className="diasplay-progress-flex-box">
@@ -134,7 +168,7 @@ export default class Countdown extends React.Component {
         </div>
         <div className="InputField-buttons-container">
           <div className="InputField-container">
-            <CountdownInputField
+            <CountdownInputBlock
               changeValueFromSlider={this.changeValueFromSlider}
               changeMinutes={this.changeValueMin}
               changeSeconds={this.changeValueSec}
