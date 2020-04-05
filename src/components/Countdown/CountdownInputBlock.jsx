@@ -18,23 +18,35 @@ export default function CountdownInputBlock(props) {
   } = props;
 
   return (
-    <>
-      <CountdownSlider
-        changeValueFromSlider={changeValueFromSlider}
-        value={valueSlider}
-        isDisabled={isDisabled}
-      />
-      <InputMinutes
-        changeMinutes={changeMinutes}
-        value={valueInputMinutes}
-        isDisabled={isDisabled}
-      />
-      <InputSeconds
-        changeSeconds={changeSeconds}
-        value={valueInputSeconds}
-        isDisabled={isDisabled}
-      />
-    </>
+    <div className="input-block__wrapper">
+      <div>
+        <CountdownSlider
+          changeValueFromSlider={changeValueFromSlider}
+          value={valueSlider}
+          isDisabled={isDisabled}
+        />
+      </div>
+      <div className="input-minutes__container">
+        <span className="input-minutes__label">Минуты:</span>
+        <div className="input-minutes">
+          <InputMinutes
+            changeMinutes={changeMinutes}
+            value={valueInputMinutes}
+            isDisabled={isDisabled}
+          />
+        </div>
+      </div>
+      <div className="input-seconds__container">
+        <span className="input-seconds__label">Секунды:</span>
+        <div className="input-seconds">
+          <InputSeconds
+            changeSeconds={changeSeconds}
+            value={valueInputSeconds}
+            isDisabled={isDisabled}
+          />
+        </div>
+      </div>
+    </div>
   );
 }
 

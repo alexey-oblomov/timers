@@ -68,6 +68,14 @@ export default class Countdown extends React.Component {
     });
   };
 
+  playAudio = () => {
+    var audio = new Audio();
+    audio.preload = 'auto';
+    audio.src =
+      'https://interactive-examples.mdn.mozilla.net/media/examples/t-rex-roar.mp3';
+    audio.play();
+  };
+
   handleStart = () => {
     const { isFinish, isPaused, minutes, seconds } = this.state;
     switch (isFinish) {
@@ -115,6 +123,7 @@ export default class Countdown extends React.Component {
         isDisabled: false,
         isFinish: true,
       });
+      this.playAudio();
       return;
     }
 
@@ -187,7 +196,7 @@ export default class Countdown extends React.Component {
             </div>
             <div className="btn">
               <Button type="primary" onClick={this.handleReset}>
-                Сбросить
+              &nbsp;&nbsp;Сбросить&nbsp;
               </Button>
             </div>
           </div>

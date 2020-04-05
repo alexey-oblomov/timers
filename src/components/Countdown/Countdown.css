@@ -2,14 +2,17 @@
     display: flex;
     flex-direction: column;
     margin: auto;
+    padding: 10px;
 }
 
 .btn-container {
     display: flex;
     flex-direction: column;
-
-    margin: 5px;
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
     padding: 5px;
+    padding-top: 9px;
+    padding-bottom: 9px;
     flex: 0 1 auto;
     align-self: center;
 }
@@ -19,10 +22,11 @@
 }
 
 .display-progress-container {
+    box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border-radius: 5px;
     display: flex;
     justify-content: center;
-    height: 100px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
    }
 
 .diasplay-progress-flex-box {
@@ -38,16 +42,17 @@
     margin-right: auto;
 
     margin: 5px;
+    margin-left: 0;
     padding: 5px;
+    padding-left: 0;
     flex: 0 1 auto;
     align-self: center;
 }
 
 .InputField-buttons-container {
     display: flex;
-    justify-content: center;
-    height: 100px;
-    margin-bottom: 20px;
+    justify-content: space-between;
+    margin-top: 20px;
    }
 
 .InputField-buttons-flex-box {
