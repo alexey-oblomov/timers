@@ -78,6 +78,11 @@ export default class Countdown extends React.Component {
 
   handleStart = () => {
     const { isFinish, isPaused, minutes, seconds } = this.state;
+
+    if (minutes === 0 && seconds === 0) {
+      return;
+    }
+
     switch (isFinish) {
       case true:
         if (isPaused) {

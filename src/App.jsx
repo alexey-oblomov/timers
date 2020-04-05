@@ -11,6 +11,7 @@ function App() {
   return (
     <div className="app-container">
       <header className="app-header">
+        <span className="link-github"><a href="https://github.com/alexey-oblomov/timers" alt="Ссылка на GutHub">GitHub: https://github.com/alexey-oblomov/timers</a></span>
         <h1>Таймеры</h1>
       </header>
       <div className="main">
