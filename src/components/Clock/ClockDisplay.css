@@ -1,14 +1,16 @@
-.timerDisplayWrapper {
+.clock-display-wrapper {
     display: flex;
+    flex-direction: row;
     justify-content: center;
 }
 
-.class1 {
-    display: block;
-    text-align: right;
+.heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    text-align: center;
 }
 
-.class2 {
-    display: block;
-    text-align: left;
+.current-time{
+    padding: 0;
 }

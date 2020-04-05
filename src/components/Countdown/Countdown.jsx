@@ -162,21 +162,21 @@ export default class Countdown extends React.Component {
     const valueDisplaySeconds = this.displaySecValue(this.state.seconds);
 
     return (
-      <div className="Countdown-container">
-        <h1>Счетчик обратного времени</h1>
+      <div className="countdown-container">
+        <span className="heading">Счетчик обратного времени</span>
         <div className="display-progress-container">
-          <div className="diasplay-progress-flex-box">
+          <div className="display-progress-flex-box">
             <CountdownDisplay
               minutes={valueDisplayMinutes}
               seconds={valueDisplaySeconds}
             />
           </div>
-          <div className="diasplay-progress-flex-box">
+          <div className="display-progress-flex-box">
             <CountdownProgress percentTime={percentTime} />
           </div>
         </div>
-        <div className="InputField-buttons-container">
-          <div className="InputField-container">
+        <div className="input-field-buttons-container ">
+          <div className="input-field-container">
             <CountdownInputBlock
               changeValueFromSlider={this.changeValueFromSlider}
               changeMinutes={this.changeValueMin}
@@ -191,12 +191,12 @@ export default class Countdown extends React.Component {
           <div className="btn-container">
             <div className="btn">
               <Button type="primary" onClick={this.handleStart}>
-                Пуск/пауза
+                <span className="btn-span">Пуск/пауза</span>
               </Button>
             </div>
             <div className="btn">
               <Button type="primary" onClick={this.handleReset}>
-              &nbsp;&nbsp;Сбросить&nbsp;
+                <span className="btn-span">&nbsp;&nbsp;Сбросить&nbsp;</span>
               </Button>
             </div>
           </div>

@@ -1,13 +1,19 @@
-.timerDisplayWrapper {
+.timer-display-wrapper {
     display: flex;
+    flex-direction: column;
     justify-content: center;
 }
 
-.class1 {
-    display: block;
-    text-align: right;
+.heading {
+    font-size: 24px;
+    margin-bottom: 10px;
+    padding-right: 5px;
+    text-align: center;
 }
 
-h1 {
-    text-align: center;
+.current-time {
+    font-size: 24px;
+    margin: auto;
+    margin-bottom: 10px;
+    padding-right: 5px;
 }

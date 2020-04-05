@@ -1,7 +1,9 @@
 .input-block__wrapper {
     box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #dedcdc;
     border-radius: 5px;
     padding: 10px;
+    margin-left: 5px;
 }
 
 .input-minutes__container {

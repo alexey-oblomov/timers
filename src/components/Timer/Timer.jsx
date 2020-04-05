@@ -85,12 +85,12 @@ export default class Timer extends React.Component {
         <div className="btn-container">
           <div className="btn">
             <Button type="primary" onClick={this.handleStart}>
-              Пуск/пауза
+            <span className="btn-span">Пуск/пауза</span>
             </Button>
           </div>
           <div className="btn">
             <Button type="primary" onClick={this.handleReset}>
-              Сбросить
+            <span className="btn-span">&nbsp;&nbsp;Сбросить&nbsp;</span>
             </Button>
           </div>
         </div>
