@@ -53,7 +53,6 @@ export default class Timer extends React.Component {
       });
       this.timerID = setTimeout(() => this.tick(), 17);
     } else {
-      clearTimeout(this.timerID);
       this.setState({
         isPaused: true,
       });
