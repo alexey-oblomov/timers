@@ -7,22 +7,13 @@ import { InputMinutes } from './CountdownInputMinutes';
 import { InputSeconds } from './CountdownInputSeconds';
 
 export default function CountdownInputBlock(props) {
-  const {
-    changeMinutes,
-    changeSeconds,
-    changeValueFromSlider,
-    valueInputMinutes,
-    valueInputSeconds,
-    isDisabled,
-    valueSlider,
-  } = props;
-
+  const { timerValue, changeTimerValue, isDisabled } = props;
   return (
     <div className="input-block__wrapper">
       <div>
         <CountdownSlider
-          changeValueFromSlider={changeValueFromSlider}
-          value={valueSlider}
+          changeTimerValue={changeTimerValue}
+          timerValue={timerValue}
           isDisabled={isDisabled}
         />
       </div>
@@ -30,8 +21,8 @@ export default function CountdownInputBlock(props) {
         <span className="input-minutes__label">Минуты:</span>
         <div className="input-minutes">
           <InputMinutes
-            changeMinutes={changeMinutes}
-            value={valueInputMinutes}
+            changeTimerValue={changeTimerValue}
+            timerValue={timerValue}
             isDisabled={isDisabled}
           />
         </div>
@@ -40,8 +31,8 @@ export default function CountdownInputBlock(props) {
         <span className="input-seconds__label">Секунды:</span>
         <div className="input-seconds">
           <InputSeconds
-            changeSeconds={changeSeconds}
-            value={valueInputSeconds}
+            changeTimerValue={changeTimerValue}
+            timerValue={timerValue}
             isDisabled={isDisabled}
           />
         </div>
@@ -54,8 +45,6 @@ CountdownInputBlock.propTypes = {
   changeMinutes: PropTypes.func,
   changeSeconds: PropTypes.func,
   changeValueFromSlider: PropTypes.func,
-  valueInputMinutes: PropTypes.number,
-  valueInputSeconds: PropTypes.number,
   isDisabled: PropTypes.bool,
-  valueSlider: PropTypes.number,
+  timerValue: PropTypes.number,
 };

@@ -5,33 +5,35 @@ import './CountdownInputSeconds.css';
 import { InputNumber, Row } from 'antd';
 
 export class InputSeconds extends React.Component {
-    onChange = (value) => {
-      if (isNaN(value)) {
-        return;
-      }
-      const { changeSeconds } = this.props;
-      changeSeconds(value);
-    };
-  
-    render() {
-      const { isDisabled, value } = this.props;
-      return (
-        <Row>
-          <InputNumber
-            min={0}
-            max={60}
-            style={{ margin: '0 16px' }}
-            step={1}
-            value={value}
-            onChange={this.onChange}
-            disabled={isDisabled}
-          />
-        </Row>
-      );
+  onChange = (value) => {
+    if (isNaN(value)) {
+      return;
     }
-  }
-  
-  InputSeconds.propTypes = {
-    isDisabled: PropTypes.bool,
-    value: PropTypes.number,
+    const { changeTimerValue } = this.props;
+    const id = 'seconds';
+    changeTimerValue(value, id);
   };
+
+  render() {
+    const { isDisabled, timerValue } = this.props;
+    const value = Math.trunc(timerValue % 60);
+    return (
+      <Row>
+        <InputNumber
+          min={0}
+          max={59}
+          style={{ margin: '0 16px' }}
+          value={value}
+          onChange={this.onChange}
+          step={1}
+          disabled={isDisabled}
+        />
+      </Row>
+    );
+  }
+}
+
+InputSeconds.propTypes = {
+  isDisabled: PropTypes.bool,
+  value: PropTypes.number,
+};

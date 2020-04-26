@@ -6,18 +6,19 @@ import { Slider } from 'antd';
 
 export class CountdownSlider extends React.Component {
   onChange = (value) => {
-    const { changeValueFromSlider } = this.props;
-    changeValueFromSlider(value);
+    const { changeTimerValue } = this.props;
+    const id = 'slider';
+    changeTimerValue(value, id);
   };
 
   render() {
-    const { isDisabled, value } = this.props;
+    const { isDisabled, timerValue } = this.props;
     return (
       <Slider
         min={0}
-        max={43200}
+        max={3600}
         step={15}
-        value={value}
+        value={timerValue}
         onChange={this.onChange}
         disabled={isDisabled}
       />

@@ -6,53 +6,59 @@ import TimerDisplay from './TimerDisplay';
 
 export default class Timer extends React.Component {
   state = {
-    hour: 0,
-    minute: 0,
-    second: 0,
-    millisecond: 0,
+    timerValue: 0,
+    startTime: 0,
+    saveValue: 0,
     isPaused: true,
+    isStart: true,
   };
 
   componentWillUnmount() {
-    clearInterval(this.timerID);
+    clearTimeout(this.timerID);
   }
 
   tick() {
-    if (this.state.isPaused) {
+    let { startTime, timerValue, isPaused, saveValue } = this.state;
+
+    if (isPaused) {
       clearTimeout(this.timerID);
       return;
     }
+
+    const currentTime = Date.now();
+    timerValue = saveValue + currentTime - startTime;
     this.setState({
-      millisecond: this.state.millisecond + 17,
+      timerValue,
     });
-    if (this.state.millisecond >= 1000) {
-      this.setState({
-        second: this.state.second + 1,
-        millisecond: 0,
-      });
-    }
-    if (this.state.second === 60) {
-      this.setState({
-        minute: this.state.minute + 1,
-        second: 0,
-      });
-    }
-    if (this.state.minute === 60) {
-      this.setState({
-        hour: this.state.hour + 1,
-        minute: 0,
-      });
-    }
     this.timerID = setTimeout(() => this.tick(), 17);
   }
 
   handleStart = () => {
-    if (this.state.isPaused) {
+    let { isPaused, isStart, timerValue, saveValue } = this.state;
+
+    if (isPaused && isStart) {
+      const startTime = Date.now();
       this.setState({
         isPaused: false,
+        isStart: false,
+        startTime,
       });
       this.timerID = setTimeout(() => this.tick(), 17);
-    } else {
+    } else if (isPaused && !isStart) {
+      const startTime = Date.now();
+      this.setState({
+        isPaused: false,
+        startTime,
+      });
+      this.timerID = setTimeout(() => this.tick(), 17);
+    } else if (!isPaused && !isStart) {
+      saveValue = timerValue;
+      this.setState({
+        saveValue,
+        startTime: 0,
+        isPaused: true,
+      });
+    } else if (!isPaused && isStart) {
       this.setState({
         isPaused: true,
       });
@@ -60,36 +66,29 @@ export default class Timer extends React.Component {
   };
 
   handleReset = () => {
+    const startTime = Date.now();
     this.setState({
-      hour: 0,
-      minute: 0,
-      second: 0,
-      millisecond: 0,
+      timerValue: 0,
+      startTime,
+      saveValue: 0,
+      isStart: true,
     });
   };
 
   render() {
-    const { hour, minute, second, millisecond } = this.state;
-    const time =
-      ('0' + hour).split('').slice(-2).join('') +
-      ':' +
-      ('0' + minute).split('').slice(-2).join('') +
-      ':' +
-      ('0' + second).split('').slice(-2).join('') +
-      ':' +
-      ('00' + millisecond).split('').slice(-3).join('');
+    const { timerValue } = this.state;
     return (
       <div className="timer-container">
-        <TimerDisplay currentTime={time} />
+        <TimerDisplay timerValue={timerValue} />
         <div className="btn-container">
           <div className="btn">
             <Button type="primary" onClick={this.handleStart}>
-            <span className="btn-span">Пуск/пауза</span>
+              <span className="btn-span">Пуск/пауза</span>
             </Button>
           </div>
           <div className="btn">
             <Button type="primary" onClick={this.handleReset}>
-            <span className="btn-span">&nbsp;&nbsp;Сбросить&nbsp;</span>
+              <span className="btn-span">&nbsp;&nbsp;Сбросить&nbsp;</span>
             </Button>
           </div>
         </div>
