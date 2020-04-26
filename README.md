@@ -2,7 +2,7 @@
 
 Демонстрация: https://alexey-oblomov.github.io/timers/
 
-![screenshot](https://github.com/alexey-oblomov/timers/dev/screenshot.png)
+![screenshot](https://github.com/alexey-oblomov/timers/raw/dev/screenshot.png)
 
 Есть страница с тремя табами: часы, таймер и обратный отсчет.
 
