@@ -1,9 +1,8 @@
-# timers
 <h1>Таймеры</h1>
 
 Демонстрация: https://alexey-oblomov.github.io/timers/
 
-![alt text](https://github.com/alexey-oblomov/timers/screenshot.png)
+![alt text](https://github.com/alexey-oblomov/timers/dev/screenshot.png)
 
 Есть страница с тремя табами: часы, таймер и обратный отсчет.
 
