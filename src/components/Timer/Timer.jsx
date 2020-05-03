@@ -58,10 +58,6 @@ export default class Timer extends React.Component {
         startTime: 0,
         isPaused: true,
       });
-    } else if (!isPaused && isStart) {
-      this.setState({
-        isPaused: true,
-      });
     }
   };
 

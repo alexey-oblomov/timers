@@ -54,16 +54,9 @@ export default class Countdown extends React.Component {
     });
   };
 
-  pauseOn = () => {
-    clearTimeout(this.timerID);
+  pauseToggle = () => {
     this.setState({
-      isPaused: true,
-    });
-  };
-
-  pauseOff = () => {
-    this.setState({
-      isPaused: false,
+      isPaused: !this.state.isPaused,
     });
   };
 
@@ -93,15 +86,17 @@ export default class Countdown extends React.Component {
           });
           this.timerID = setTimeout(() => this.tick(), 1000);
         } else {
-          this.pauseOn();
+          clearTimeout(this.timerID);
+          this.pauseToggle();
         }
         break;
       case false:
         if (isPaused) {
-          this.pauseOff();
+          this.pauseToggle();
           this.timerID = setTimeout(() => this.tick(), 1000);
         } else {
-          this.pauseOn();
+          clearTimeout(this.timerID);
+          this.pauseToggle();
         }
         break;
       default:
