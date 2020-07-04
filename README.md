@@ -2,8 +2,7 @@
 
 Демонстрация: https://alexey-oblomov.github.io/timers/
 
-![screenshot](https://github.com/alexey-oblomov/timers/raw/dev/screenshot.png)
-[<img src="http://www.google.com.au/images/nav_logo7.png">](http://google.com.au/)
+[<img src="https://github.com/alexey-oblomov/timers/raw/dev/screenshot.png">](https://alexey-oblomov.github.io/timers/)
 
 Есть страница с тремя табами: часы, таймер и обратный отсчет.
 
